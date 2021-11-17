@@ -7,7 +7,7 @@ const MyVerticallyCenteredModal = (props) => {
   const {courseId, medium, subjects, participants, seats, startDate, EndDate, classTime, fees, classes } = courses;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/courses/${props.id}`)
+    fetch(`https://limitless-eyrie-66726.herokuapp.com/courses/${props.id}`)
       .then(res => res.json())
       .then(data => setCourses(data))
   }, []);

@@ -6,7 +6,7 @@ const LiveClass = () => {
     const [courses, setCourses] = useState([]);
     const date = new Date();
     useEffect(() => {
-        fetch(`http://localhost:5000/courses`)
+        fetch(`https://limitless-eyrie-66726.herokuapp.com/courses`)
             .then(res => res.json())
             .then(data => {
                 const reamingData = data.filter(course => new Date(course.startDate) <= date && new Date(course.EndDate >= date));

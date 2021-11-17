@@ -13,7 +13,7 @@ const UpdateCourse = () => {
     const {_id, courseId, medium, subjects, participants, seats, startDate, EndDate, classTime, fees, classes, status, classduration } = courses;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/courses/${id}`)
+        fetch(`https://limitless-eyrie-66726.herokuapp.com/courses/${id}`)
             .then(res => res.json())
             .then(data => setCourses(data))
     }, [id]);
@@ -32,7 +32,7 @@ const UpdateCourse = () => {
     setValue('fees', `${fees}`);
 
     const onSubmit = data => {
-        axios.put(`http://localhost:5000/courses/${_id}`, data)
+        axios.put(`https://limitless-eyrie-66726.herokuapp.com/courses/${_id}`, data)
             .then(res => {
                 swal("Congratulation!", "Update Successfully!", "success");
                 history.push('/')

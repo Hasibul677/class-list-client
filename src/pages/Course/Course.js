@@ -11,7 +11,7 @@ const Course = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/courses`)
+        fetch(`https://limitless-eyrie-66726.herokuapp.com/courses`)
             .then(res => res.json())
             .then(data => setCourses(data))
     }, []);
@@ -26,7 +26,7 @@ const Course = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    axios.delete(`http://localhost:5000/courses/${id}`)
+                    axios.delete(`https://limitless-eyrie-66726.herokuapp.com/courses/${id}`)
                         .then(res => {
                             const reamingData = courses.filter(course => course._id !== id);
                             setCourses(reamingData);

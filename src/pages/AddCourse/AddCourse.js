@@ -10,7 +10,7 @@ const AddCourse = () => {
     const { register, handleSubmit } = useForm();
     const history = useHistory();
     const onSubmit = data => {
-        axios.post(`http://localhost:5000/courses`, data)
+        axios.post(`https://limitless-eyrie-66726.herokuapp.com/courses`, data)
             .then(res => {
                 swal("Congratulation!", "New Courses Added Successfully!", "success");
                 history.push('/')

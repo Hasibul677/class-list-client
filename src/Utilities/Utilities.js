@@ -21,3 +21,29 @@ export const processDate = (date) => {
   const [d, m, y] = date.split("/");
   return `${y}-${m}-${d}`;
 };
+
+
+
+
+// const [time, setTime] = useState();
+
+
+// let time1 = `${processTime(classTime)}:00`
+// let array1 = time1.split(":");
+// let seconds1 = (parseInt(array1[0], 10) * 60 * 60) + (parseInt(array1[1], 10) * 60) + parseInt(array1[2], 10);
+
+// let currentTime = new Date();
+// let countDown = currentTime.toLocaleTimeString();
+// let time2 = `${processTime(countDown)}:00`
+// let array2 = time2.split(":");
+// let seconds2 = (parseInt(array2[0], 10) * 60 * 60) + (parseInt(array2[1], 10) * 60) + parseInt(array2[2], 10);
+
+
+
+// useEffect(() => {
+//     let mainTime = seconds1 - seconds2
+//     const interval = setInterval(() => {
+//       setTime(mainTime => mainTime - 1);
+//     }, 1000);
+//     return () => clearInterval(interval);
+//   }, []);

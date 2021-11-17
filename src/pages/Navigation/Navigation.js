@@ -10,11 +10,11 @@ const Navigation = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/class">CLASSES</NavLink>
-              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/subject">SUBJECTS</NavLink>
-              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/tutor">TUTOR</NavLink>
-              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/students">STUDENTS</NavLink>
-              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/parents">PARENTS</NavLink>
+              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/">CLASSES</NavLink>
+              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/">SUBJECTS</NavLink>
+              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/">TUTOR</NavLink>
+              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/">STUDENTS</NavLink>
+              <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/">PARENTS</NavLink>
             </Nav>
             <Nav className="ms-auto">
               <NavLink style={{textDecoration:'none', marginRight:'15px', fontWeight:700, color:'#336BFF'}} to="/login">LOGIN</NavLink>

@@ -24,7 +24,7 @@ function App() {
             <Course></Course>
             <Login></Login>
           </Route>
-          <Route path='/class'>
+          <Route path='/addcourse'>
             <Navigation></Navigation>
             <AddCourse></AddCourse>
           </Route>

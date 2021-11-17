@@ -41,7 +41,9 @@ const Course = () => {
     }
     return (
         <div className='container-fluid text-center'>
-
+        <div>
+            <h3>All Class || <Link to='/addcours'>Create New Class +</Link></h3>
+        </div>
             <Row>
                 <Table style={{ fontSize: '13px' }}>
                     <thead>

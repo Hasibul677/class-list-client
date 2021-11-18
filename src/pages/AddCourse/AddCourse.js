@@ -57,7 +57,7 @@ const AddCourse = () => {
                                 <label for="fee">Fee</label>
                                 <input id='fee' className='form-control' type='number' {...register("fees")} />
 
-                                <input className='form-control mt-3' type="submit" />
+                                <input className='btn form-control mt-3' type="submit" />
                             </form>
                         </Card>
                     </Col>

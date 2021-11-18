@@ -12,6 +12,7 @@ const Login = () => {
     const handleSignIn=()=>{
         googleSignIn();
         history.push(ridirect_path)
+       
     }
     return (
         <div className='text-center'>

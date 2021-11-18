@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { Card, Col } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Card } from 'react-bootstrap';
 import { processTime } from '../../Utilities/Utilities';
 import Countdown from "react-countdown";
 
-const DisplayClass = ({ course }) => {
-    const { courseId, subjects, classTime, classes, classduration, status } = course;
-    const [show, setShow] = useState('d-block')
-    console.log(classTime);
-    console.log(Date.now());
 
+const DisplayClass = ({ course}) => {
+    const [show, setShow] = useState('d-block')
+    const { courseId, subjects, classTime, classes, classduration, status } = course;
+   
     let time1 = `${classTime}:00`
     let array1 = time1.split(":");
     let seconds1 = (parseInt(array1[0], 10) * 60 * 60) + (parseInt(array1[1], 10) * 60) + parseInt(array1[2], 10);
@@ -18,7 +17,7 @@ const DisplayClass = ({ course }) => {
     let countDown = currentTime.toLocaleTimeString('en-GB');
     let time2 = `${countDown}:00`
     let array2 = time2.split(":");
-    console.log(countDown, 'Time 20', time2, 'Process Time: ', countDown )
+    console.log(countDown, 'Time 20', time2, 'Process Time: ', countDown)
     let seconds2 = (parseInt(array2[0], 10) * 60 * 60) + (parseInt(array2[1], 10) * 60) + parseInt(array2[2], 10);
     let mainTime = seconds1 - seconds2
 
@@ -29,8 +28,9 @@ const DisplayClass = ({ course }) => {
 
     let dueration = seconds3 - seconds2;
     const renderer1 = ({ completed }) => {
-      
+
         if (completed) {
+        
             setShow('d-none')
             return <></>;
         }
@@ -39,11 +39,9 @@ const DisplayClass = ({ course }) => {
             return <></>;
         }
     };
-    
+
     return (
-
-        <Col className={show} xm={12} md={6} lg={4}>
-
+            <div className={`${show} m-2`}> 
             <Countdown date={Date.now() + dueration * 1000} renderer={renderer1} />
             <Card className='py-2 px-3 shadow' style={{
                 borderLeft: '6px solid #0EB9C4',
@@ -56,35 +54,34 @@ const DisplayClass = ({ course }) => {
                         <p className='text-secondary'>Batch: {courseId}</p>
                     </div>
                     <div>
-                        <button className='rounded text-white' style={{ fontSize: '15px', backgroundColor: 'goldenrod' }}>{status}</button>
+                        <span className='rounded text-white' style={{ fontSize: '15px', backgroundColor: 'goldenrod', padding: '5px 10px' }}>{status}</span>
                     </div>
                 </div>
                 <div className='d-flex justify-content-between align-items-center'>
                     <div>
                         <h6 className='text-danger'>{processTime(classTime)} to {processTime(classduration)}</h6>
-                        <Countdown date={Date.now()  + (mainTime * 1000)} renderer={renderer} />
+                        <Countdown date={Date.now() + (mainTime * 1000)} renderer={renderer} />
 
                     </div>
                     <div>
-                        <a href="https://meet.google.com/" target='blank'><button className='rounded bg-danger text-white' style={{ fontSize: '15px' }}>join class</button></a>
+                        <a href="https://meet.google.com/" target='blank' className='btn rounded bg-danger text-white' style={{ fontSize: '15px' }}>join class </a>
                     </div>
                 </div>
 
             </Card>
-        </Col>
-
+            </div> 
     )
 };
 
 // Random component
 const Completionist = () => {
- return <span className='text-secondary' style={{ fontFamily: 'cursive', fontSize: '15px' }}>Class Already Started!</span>
+    return <span className='text-secondary' style={{ fontFamily: 'cursive', fontSize: '15px' }}>Class Already Started!</span>
 
 }
 
 // Renderer callback with condition
 const renderer = ({ hours, minutes, seconds, completed }) => {
-    if (completed)  {
+    if (completed) {
         // Render a complete state
         return <Completionist />;
     } else {

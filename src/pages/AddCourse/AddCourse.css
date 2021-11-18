@@ -7,3 +7,15 @@
     width: 80%;
     margin-top: 10px;
 }
+.crbutton button{
+    height: 80px;
+    padding: 10px 20px;
+    background: url('https://cdn.dsmcdn.com/web/production/slick-arrow.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin-top: 40px;
+    float: right;
+    border: 0px solid black;
+}

@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router';
 
 const AddCourse = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit} = useForm();
     const history = useHistory();
     const onSubmit = data => {
         axios.post(`https://limitless-eyrie-66726.herokuapp.com/courses`, data)
@@ -16,6 +16,7 @@ const AddCourse = () => {
                 history.push('/')
             })
     };
+
 
     return (
         <div>
@@ -54,7 +55,7 @@ const AddCourse = () => {
                                     <option value="Free">Free</option>
                                 </select>
                                 <label for="fee">Fee</label>
-                                <input id='fee' className='form-control' type='number' {...register("fees")} value='200'/>
+                                <input id='fee' className='form-control' type='number' {...register("fees")} />
 
                                 <input className='form-control mt-3' type="submit" />
                             </form>

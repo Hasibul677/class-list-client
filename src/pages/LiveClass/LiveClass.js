@@ -6,13 +6,17 @@ const LiveClass = () => {
     const [courses, setCourses] = useState([]);
     let date = new Date();
     let countDown = date.toLocaleTimeString('en-GB');
-    console.log(countDown);
+    console.log(courses)
 
     useEffect(() => {
         fetch(`https://limitless-eyrie-66726.herokuapp.com/courses`)
             .then(res => res.json())
             .then(data => {
-                const remainingData = data.filter(course => new Date(course.startDate) <= date && new Date(course.EndDate >= date && countDown <= course.classduration ));
+                let remainingData = data.filter(course => new Date(course.startDate) <= date && new Date(course.EndDate >= date && countDown <= course.classduration ));
+
+                remainingData.sort(function (a, b) {
+                    return parseInt(a.classTime) - parseInt(b.classTime);
+                  });
                 setCourses(remainingData);
 
             })

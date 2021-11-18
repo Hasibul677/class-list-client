@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import DisplayClass from './DisplayClass';
 
 const LiveClass = () => {
     const [courses, setCourses] = useState([]);
-    const date = new Date();
+    console.log(courses);
+    let date = new Date();
     useEffect(() => {
         fetch(`https://limitless-eyrie-66726.herokuapp.com/courses`)
             .then(res => res.json())
             .then(data => {
                 const reamingData = data.filter(course => new Date(course.startDate) <= date && new Date(course.EndDate >= date));
                 setCourses(reamingData);
+               
             })
     }, []);
     return (
-        <div className='my-5'>
-            <Container>
-                <h1>Today's Live Class</h1>
-                <Row>
+        <div style={{minHeight:'200px'}} className='my-5'>
+
+                <h4 className='mb-3'>Today's Live Class</h4>
+                <Row className='g-5'>
                     {
                         courses.map(course => <DisplayClass key={course._id} course={course}></DisplayClass>)
                     }
                 </Row>
-            </Container>
+
         </div>
     );
 };

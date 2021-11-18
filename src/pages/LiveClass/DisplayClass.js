@@ -1,33 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Col} from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Card, Col } from 'react-bootstrap';
 import { processTime } from '../../Utilities/Utilities';
 import Countdown from "react-countdown";
 
-const DisplayClass = ({course}) => {
-    const { _id, courseId, subjects, classTime, fees, classes, classduration, status } = course;
-  
-    let time1 = `${processTime(classTime)}:00`
+const DisplayClass = ({ course }) => {
+    const { courseId, subjects, classTime, classes, classduration, status } = course;
+    const [show, setShow] = useState('d-block')
+    console.log(classTime);
+    console.log(Date.now());
+
+    let time1 = `${classTime}:00`
     let array1 = time1.split(":");
     let seconds1 = (parseInt(array1[0], 10) * 60 * 60) + (parseInt(array1[1], 10) * 60) + parseInt(array1[2], 10);
 
     let currentTime = new Date();
-    let countDown = currentTime.toLocaleTimeString();
-    let time2 = `${processTime(countDown)}:00`
-    let array2 = time2.split(":");
-    let seconds2 = (parseInt(array2[0], 10) * 60 * 60) + (parseInt(array2[1], 10) * 60) + parseInt(array2[2], 10);
 
+    let countDown = currentTime.toLocaleTimeString('en-GB');
+    let time2 = `${countDown}:00`
+    let array2 = time2.split(":");
+    console.log(countDown, 'Time 20', time2, 'Process Time: ', countDown )
+    let seconds2 = (parseInt(array2[0], 10) * 60 * 60) + (parseInt(array2[1], 10) * 60) + parseInt(array2[2], 10);
     let mainTime = seconds1 - seconds2
+
+    //--------------------------------------ending class -----------------------------------//
+    let time3 = `${classduration}:00`
+    let array3 = time3.split(":");
+    let seconds3 = (parseInt(array3[0], 10) * 60 * 60) + (parseInt(array3[1], 10) * 60) + parseInt(array3[2], 10);
+
+    let dueration = seconds3 - seconds2;
+    const renderer1 = ({ completed }) => {
+      
+        if (completed) {
+            setShow('d-none')
+            return <></>;
+        }
+
+        else {
+            return <></>;
+        }
+    };
+    
     return (
-        <Col xm={12} md={6} lg={4}>
-            <Card className='p-2' style={{
-                borderLeft: '5px solid red',
-                borderTopLeftRadius: '10px',
+
+        <Col className={show} xm={12} md={6} lg={4}>
+
+            <Countdown date={Date.now() + dueration * 1000} renderer={renderer1} />
+            <Card className='py-2 px-3 shadow' style={{
+                borderLeft: '6px solid #0EB9C4',
+                borderTopLeftRadius: '20px',
                 borderBottomLeftRadius: '10px'
             }}>
                 <div className='d-flex justify-content-between align-items-center'>
                     <div>
-                        <h3>{subjects}, Class-{classes}</h3>
-                        <p>Batch: {courseId}</p>
+                        <h4 style={{ color: '#0EB9C4', fontWeight: 700 }}>{subjects}, Class-{classes}</h4>
+                        <p className='text-secondary'>Batch: {courseId}</p>
                     </div>
                     <div>
                         <button className='rounded text-white' style={{ fontSize: '15px', backgroundColor: 'goldenrod' }}>{status}</button>
@@ -35,36 +61,41 @@ const DisplayClass = ({course}) => {
                 </div>
                 <div className='d-flex justify-content-between align-items-center'>
                     <div>
-                        <h6>{processTime(classTime)} to {processTime(classduration)}</h6>
-                        <Countdown date={Date.now() + mainTime*1000} renderer={renderer} />
+                        <h6 className='text-danger'>{processTime(classTime)} to {processTime(classduration)}</h6>
+                        <Countdown date={Date.now()  + (mainTime * 1000)} renderer={renderer} />
 
                     </div>
                     <div>
-                        <button className='rounded bg-danger text-white' style={{ fontSize: '15px' }}>join class</button>
+                        <a href="https://meet.google.com/" target='blank'><button className='rounded bg-danger text-white' style={{ fontSize: '15px' }}>join class</button></a>
                     </div>
                 </div>
 
             </Card>
         </Col>
+
     )
 };
 
 // Random component
-const Completionist = () => <span>Class Already Started!</span>;
+const Completionist = () => {
+ return <span className='text-secondary' style={{ fontFamily: 'cursive', fontSize: '15px' }}>Class Already Started!</span>
+
+}
 
 // Renderer callback with condition
 const renderer = ({ hours, minutes, seconds, completed }) => {
-  if (completed) {
-    // Render a complete state
-    return <Completionist />;
-  } else {
-    // Render a countdown
-    return (
-      <span>
-        {hours} hours: {minutes} minutes: {seconds} seconds
-      </span>
-    );
-  }
+    if (completed)  {
+        // Render a complete state
+        return <Completionist />;
+    } else {
+        // Render a countdown
+        return (
+            <span>
+                {hours} hours: {minutes} minutes: {seconds} seconds
+            </span>
+        );
+    }
 };
+
 
 export default DisplayClass;

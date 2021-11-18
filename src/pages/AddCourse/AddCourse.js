@@ -21,30 +21,42 @@ const AddCourse = () => {
         <div>
             <Container>
                 <Row>
-                    <Col xm={12} md={12} lg={3}></Col>
-                    <Col xm={12} md={12} lg={6}>
-                        <Card className='py-4 bg-dark'>
+                    <Col xm={12} md={12} lg={2}></Col>
+                    <Col xm={12} md={12} lg={8}>
+                        <Card className='py-4 bg-dark text-white'>
                             <form className='form-design' onSubmit={handleSubmit(onSubmit)}>
-                                <input className='form-control' {...register("courseId")} placeholder='Course ID' />
-                                <select className='form-control' {...register("medium")}>
+                                <label for="courseId">Course ID</label>
+                                <input id='courseId' className='form-control' {...register("courseId")} />
+                                <label for="Curriculum">Curriculum</label>
+                                <select id='Curriculum' className='form-control' {...register("medium")}>
                                     <option value="English Medium">English Medium</option>
                                     <option value="Bangla Medium">Bangla Medium</option>
                                 </select>
-                                <input className='form-control' type='number' {...register("classes")} placeholder='Class' />
-                                <input className='form-control' {...register("subjects")} placeholder='Subjects' />
-                                <input className='form-control' type='number' {...register("participants")} placeholder='No of Perticipants' />
-                                <input className='form-control' type='number' {...register("seats")} placeholder='Vacent Seats' />
-                                <input className='form-control' type='date' {...register("startDate")} placeholder='Start Date' />
-                                <input className='form-control' type='date' {...register("EndDate")} placeholder='End Date' />
-                                <input className='form-control' type='time' {...register("classTime")} placeholder='Class Time' />
-                                <input className='form-control' type='time' {...register("classduration")} placeholder='Class Duration' />
-                                <select className='form-control' {...register("status")}>
+                                <label for="classess">Class</label>
+                                <input id='classess' className='form-control' type='number' {...register("classes")} />
+                                <label for="subject">Subjects</label>
+                                <input id='subject' className='form-control' {...register("subjects")} />
+                                <label for="participant">Participant</label>
+                                <input id='participant' className='form-control' type='number' {...register("participants")} />
+                                <label for="seat">Vacant Seats</label>
+                                <input id='seat' className='form-control' type='number' {...register("seats")} />
+                                <label for="start">Start Date</label>
+                                <input id='start' className='form-control' type='date' {...register("startDate")} />
+                                <label for="end">End Date</label>
+                                <input id='end' className='form-control' type='date' {...register("EndDate")} />
+                                <label for="cTime">Class Time</label>
+                                <input id='cTime' className='form-control' type='time' {...register("classTime")} />
+                                <label for="cEnd">Class End Time</label>
+                                <input id='cEnd' className='form-control' type='time' {...register("classduration")} />
+                                <label for="payment">Payment Status</label>
+                                <select id='payment' className='form-control' {...register("status")}>
                                     <option value="Paid">Paid</option>
                                     <option value="Free">Free</option>
                                 </select>
-                                <input className='form-control' type='number' {...register("fees")} placeholder='Fees' />
+                                <label for="fee">Fee</label>
+                                <input id='fee' className='form-control' type='number' {...register("fees")} value='200'/>
 
-                                <input className='form-control' type="submit" />
+                                <input className='form-control mt-3' type="submit" />
                             </form>
                         </Card>
                     </Col>

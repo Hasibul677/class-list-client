@@ -11,31 +11,38 @@ import Course from './pages/Course/Course';
 import UpdateCourse from './pages/UpdateCourse/UpdateCourse';
 import LiveClass from './pages/LiveClass/LiveClass';
 import Login from './pages/Login/Login/Login';
+import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
+
 
 
 function App() {
   return (
-    <AuthProvider>
+    <div className='mx-5'>
+      <AuthProvider>
       <Router>
         <Switch>
-          <Route exact path='/'>
+          <PrivateRoute exact path='/'>
             <Navigation></Navigation>
             <LiveClass></LiveClass>
             <Course></Course>
-            <Login></Login>
-          </Route>
-          <Route path='/addcourse'>
+          </PrivateRoute>
+          <PrivateRoute path='/addcourse'>
             <Navigation></Navigation>
             <AddCourse></AddCourse>
+          </PrivateRoute>
+          <Route path='/login'>
+            <Navigation></Navigation>
+            <Login></Login>
           </Route>
-          <Route path='/update/:id'>
+          <PrivateRoute path='/update/:id'>
             <Navigation></Navigation>
             <UpdateCourse></UpdateCourse>
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
       
     </AuthProvider>
+    </div>
   );
 }
 

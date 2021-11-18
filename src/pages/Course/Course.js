@@ -5,6 +5,7 @@ import { Row, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import { processTime } from '../../Utilities/Utilities';
+import PrivateRoute from '../Login/PrivateRoute/PrivateRoute';
 import MyVerticallyCenteredModal from '../Modal/Modal';
 
 const Course = () => {
@@ -42,7 +43,7 @@ const Course = () => {
     return (
         <div className='container-fluid text-center'>
         <div>
-            <h3>All Class || <Link to='/addcours'>Create New Class +</Link></h3>
+            <h4 className='text-start fw-bold my-3'>All Class | <span style={{fontSize:'20px'}}><Link style={{textDecoration:'none', color:'#005A9C'}} to='/addcourse'>Create New Class +</Link></span></h4>
         </div>
             <Row>
                 <Table style={{ fontSize: '13px' }}>
@@ -100,7 +101,7 @@ function DisplayData({ course, serial, handleDelete }) {
                     <button onClick={handleView} className='me-2 border-0'><i className="fs-5 text-warning fas fa-eye"></i></button>
                     <Link to={`/update/${_id}`}><button className='me-2 border-0'><i className="fs-5 text-info fas fa-edit"></i></button></Link>
                     <button onClick={() => handleDelete(_id)} className='me-2 border-0'><i className="fs-5 text-danger far fa-trash-alt"></i></button>
-                    <button className='bg-danger text-white'>join class</button>
+                    <a href="https://meet.google.com/" target='blank'><button className='bg-danger text-white'>join class</button></a>
                 </td>
             </tr>
             <MyVerticallyCenteredModal
